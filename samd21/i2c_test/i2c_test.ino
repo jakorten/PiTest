@@ -24,7 +24,7 @@ TwiPinPair portSensorsA(W1_SCL, W1_SDA);
 TwiPinPair portSensorsB(W2_SCL, W2_SDA);
 
 // TwoWire instances for each port
-TwoWire WireBackbone(&sercom3, W0_SDA, W0_SCL);  // Main (Pi connection)
+TwoWire WireBackbone(&sercom5, W0_SDA, W0_SCL);  // Main (Pi connection) - uses SERCOM5 alt mux
 TwoWire WireSensorA(&sercom1, W1_SDA, W1_SCL);   // Sensor A
 TwoWire WireSensorB(&sercom4, W2_SDA, W2_SCL);   // Sensor B
 
@@ -51,8 +51,8 @@ void setup() {
     WireBackbone.onReceive(onReceive);
     WireBackbone.onRequest(onRequest);
 
-    // Set pin peripheral states
-    portBackbone.setPinPeripheralStates();
+    // Set pin peripheral states (alt mux for SERCOM5)
+    portBackbone.setPinPeripheralAltStates();
 
     while (!Serial);
 
@@ -93,4 +93,9 @@ void onRequest() {
     WireBackbone.write(receivedValue);
     Serial.print("Sent: ");
     Serial.println(receivedValue);
+}
+
+// SERCOM5 interrupt handler - required for WireBackbone callbacks
+void SERCOM5_Handler(void) {
+    WireBackbone.onService();
 }
