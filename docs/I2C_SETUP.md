@@ -4,6 +4,11 @@
 
 The SAMD21 acts as an I2C peripheral (slave) on the backbone port, communicating with the Raspberry Pi 4 as the master.
 
+## Hardware
+
+- **Board:** [Adafruit Feather M0 Express](https://learn.adafruit.com/adafruit-feather-m0-express-designed-for-circuit-python-circuitpython/arduino-ide-setup)
+- **MCU:** ATSAMD21G18 (Cortex-M0+)
+
 ## Configuration
 
 | Parameter | Value |

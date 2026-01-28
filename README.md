@@ -2,6 +2,11 @@
 
 Test connection between Raspberry Pi 4 and SensorHub (SAMD21) via I2C.
 
+## Hardware
+
+- **Raspberry Pi 4**
+- **[Adafruit Feather M0 Express](https://learn.adafruit.com/adafruit-feather-m0-express-designed-for-circuit-python-circuitpython/arduino-ide-setup)** (ATSAMD21G18)
+
 ## Wiring
 
 Connect the Raspberry Pi 4 to the SAMD21 backbone port (W0):
